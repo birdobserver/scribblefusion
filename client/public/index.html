@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Scribble Fusion</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="main.js"></script>
+    <link rel="stylesheet" type="text/css" href="main.css">
+</head>
+<body>
+    <div id="container" style="display:none;">
+        <div id="controls">
+            <span id="time-remaining"></span>
+
+            <input type="color" id="color" value="black"/>
+
+            <button id="save-button">Save drawing</button>
+        </div>
+
+        <canvas id="canvas" width="375" height="500"></canvas>
+
+        <div id="loading-message" style="display:none;">Connecting to server...</div>
+    </div>
+</body>
+</html>

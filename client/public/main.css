@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica", Ariel, sans-serif;
+}
+
+#canvas {
+    border: 1px solid #333;
+}
+
+#controls {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+#time-remaining {
+    margin-right: 1rem;
+}
+
+#save-button {
+    margin-left: 1rem;
+}

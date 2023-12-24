@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  scribblefusion-server:
+    container_name: scribblefusion:latest
+    image: scribblefusion
+    build: .
+    ports:
+      - "37043:37043"
+      - "37044:37044"
+    environment:
+      - REDIS_URL=redis://redis:6379
+    networks:
+      - sf_network
+    restart: always
+  redis:
+    image: "redis:alpine"
+    expose:
+      - "6379"
+    networks:
+      - sf_network
+    restart: always
+
+networks:
+  sf_network:
+    external: true

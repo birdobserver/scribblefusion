@@ -1,0 +1,15 @@
+scribblefusion.com {
+    root * /srv
+    file_server
+
+    @websockets {
+        header Connection *Upgrade*
+        header Upgrade websocket
+    }
+
+    reverse_proxy @websockets scribblefusion-server:37043 websocket
+
+    handle_path /sf/* {
+        reverse_proxy scribblefusion-server:37044
+    }
+}
