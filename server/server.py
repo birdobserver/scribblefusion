@@ -68,18 +68,18 @@ async def send_time_updates(redis):
 
 async def countdown(redis):
     global time_remaining
-    time_sec = countdown_secs
-    try:
-        while time_sec > 0:
-            await asyncio.sleep(1)
-            time_sec -= 1
-            time_remaining = time_sec
-        await redis.delete("drawing_data")
-        clear_update = {'clear_canvas': True, 'time_remaining': 0}
-        await redis.publish("drawing_updates", json.dumps(clear_update))
-        await countdown(redis)
-    except Exception as e:
-        logging.error(f"Error in countdown: {e}")
+    while True:
+        time_sec = countdown_secs
+        try:
+            while time_sec > 0:
+                await asyncio.sleep(1)
+                time_sec -= 1
+                time_remaining = time_sec
+            await redis.delete("drawing_data")
+            clear_update = {'clear_canvas': True, 'time_remaining': 0}
+            await redis.publish("drawing_updates", json.dumps(clear_update))
+        except Exception as e:
+            logging.error(f"Error in countdown: {e}")
 
 
 async def main():
